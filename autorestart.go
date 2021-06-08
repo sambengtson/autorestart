@@ -106,13 +106,3 @@ func RestartByExec() {
 		log.Printf("error: %s %v", binary, execErr)
 	}
 }
-
-// SendSIGUSR2 SIGUSR2 is used in github.com/facebookgo/grace package
-func SendSIGUSR2() {
-	if proc, err := os.FindProcess(os.Getpid()); err != nil {
-		log.Printf("FindProcess: %s", err)
-		return
-	} else {
-		proc.Signal(syscall.SIGUSR2)
-	}
-}
